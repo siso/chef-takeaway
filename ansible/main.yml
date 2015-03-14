@@ -1,0 +1,6 @@
+---
+- name: siso - Chef TDD Box
+  hosts: servers
+  roles:
+    - base
+    - chef

@@ -1,0 +1,12 @@
+---
+- debug: msg='Install Chef stuff'
+
+- name: Download Chef-dk
+  command: /usr/bin/wget https://opscode-omnibus-packages.s3.amazonaws.com/debian/6/x86_64/chefdk_0.4.0-1_amd64.deb -O /home/vagrant/download/chefdk_0.4.0-1_amd64.deb
+  args:
+    creates: /home/vagrant/download/chefdk_0.4.0-1_amd64.deb
+  sudo: yes
+  sudo_user: vagrant
+
+- name: Install Chef-dk
+  command: dpkg -i /home/vagrant/download/chefdk_0.4.0-1_amd64.deb

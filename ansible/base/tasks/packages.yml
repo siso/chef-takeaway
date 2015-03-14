@@ -1,0 +1,11 @@
+---
+- name: Install basic packages
+  apt:
+    pkg: "{{ item }}"
+    state: latest
+    update_cache: yes
+    cache_valid_time: 600
+  with_items:
+    - git
+    - mc
+    - screen
