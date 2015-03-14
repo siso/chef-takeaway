@@ -1,0 +1,30 @@
+---
+- name: create user's dirs
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: vagrant
+    group: vagrant
+  with_items:
+    - /home/vagrant/download
+    - /home/vagrant/share
+    - /home/vagrant/tmp
+
+- name: copy user's files
+  copy:
+    src: home/vagrant/{{ item }}
+    dest: /home/vagrant
+    owner: vagrant
+    group: vagrant
+    mode: 0644
+  with_items:
+    - .bash_aliases
+    - .bashrc
+
+- name:
+  command: git clone https://github.com/magicmonty/bash-git-prompt.git .bash-git-prompt
+  args:
+    chdir: /home/vagrant
+    creates: /home/vagrant/.bash-git-prompt
+  sudo: yes
+  sudo_user: vagrant

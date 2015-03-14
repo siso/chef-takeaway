@@ -3,4 +3,5 @@
   hosts: servers
   roles:
     - base
+    - users
     - chef
