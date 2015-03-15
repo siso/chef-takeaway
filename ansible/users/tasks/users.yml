@@ -7,8 +7,15 @@
     group: vagrant
   with_items:
     - /home/vagrant/download
-    - /home/vagrant/share
     - /home/vagrant/tmp
+    - /vagrant/share
+    - /vagrant/share/chef
+
+- name: symlink share and chef dirs
+  file: src={{ item.path }} dest={{ item.dest }} state=link
+  with_items:
+      - { path: '/vagrant/share', dest: '/home/vagrant/share' }
+      - { path: '/vagrant/share/chef', dest: '/home/vagrant/chef' }
 
 - name: copy user's files
   copy:
