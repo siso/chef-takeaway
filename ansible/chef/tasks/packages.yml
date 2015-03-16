@@ -21,8 +21,13 @@
 
 # Docker
 # see: https://docs.docker.com/installation/debian/
+- name: Download Docker install script
+  command: 'wget https://get.docker.com/ -O /tmp/get_docker_com'
+  args:
+    creates: /usr/bin/docker
+
 - name: Install Docker
-  command: curl -sSL https://get.docker.com/ | sh
+  command: 'sh /tmp/get_docker_com'
   args:
     creates: /usr/bin/docker
 
