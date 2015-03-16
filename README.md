@@ -1,13 +1,38 @@
-# Chef TDD Box
+# vagrant-cheftdd
 
-Linux Box for Chef TDD stuff.
+version: 0.1.0
+
+## TDD with Chef - Vagrant, Ansible, Test Kitchen and Docker
+
+Let Vagrant provision VirtualBox box with Ansible, and test with Test Kitchen and Docker.
+
+It's portable and fast!
 
 ## Quickstart
 
-Let's Vagrant provision VitualBox machine:
+Install [Ansible](http://www.ansible.com/):
+
+```shell
+pip install ansible
+```
+
+Use Vagrant to create and provision VitualBox machine:
 
 ```
 vagrant up
+```
+
+SSH in to VirtualBox vm:
+
+```shell
+vagrant ssh
+```
+
+Start cooking with [Chef](https://www.chef.io/):
+
+```shell
+cd chef
+berks cookbook helloworld
 ```
 
 ## Test Kitchen drivers
