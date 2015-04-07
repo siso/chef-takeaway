@@ -3,3 +3,6 @@
 
 # share dir
 share/
+
+# KitchenCI
+.kitchen
