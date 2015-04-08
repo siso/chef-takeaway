@@ -1,0 +1,28 @@
+---
+- name: create polipo dir
+  file:
+    path: /home/vagrant/polipo
+    state: directory
+    owner: vagrant
+    group: vagrant
+
+- name: copy template files
+  copy:
+    src: "{{ item }}"
+    dest: /home/vagrant/polipo
+    owner: vagrant
+    group: vagrant
+  with_items:
+    - Dockerfile
+    - kitchen-template.yml
+    - kitchen.local.yml
+
+- name:
+  command: docker build -t="docker-polipo" .
+  args:
+    chdir: /home/vagrant/polipo
+
+- name:
+  command: docker run -d -p 8123:8123 docker-polipo
+  args:
+    chdir: /home/vagrant/polipo
