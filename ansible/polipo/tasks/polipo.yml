@@ -23,6 +23,6 @@
     chdir: /home/vagrant/polipo
 
 - name:
-  command: docker run -d -p 8123:8123 docker-polipo
+  command: docker run -d -h polipo -p 8123:8123 docker-polipo
   args:
     chdir: /home/vagrant/polipo

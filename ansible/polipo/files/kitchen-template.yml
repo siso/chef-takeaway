@@ -1,9 +1,9 @@
 ---
 driver:
   name: docker
-  http_proxy: http://10.0.10.20:8123
-  https_proxy: http://10.0.10.20:8123
-  provision_command: env http_proxy=http://10.0.10.20:8123 bash -c 'curl -L
+  http_proxy: http://polipo:8123
+  https_proxy: http://polipo:8123
+  provision_command: env http_proxy=http://polipo:8123 bash -c 'curl -L
         http://www.chef.io/chef/install.sh | bash'
 
 provisioner:
