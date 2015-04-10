@@ -4,8 +4,6 @@ ssh-keygen -b 4096 -f ~/.ssh/id_rsa -N '' -q
 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 cat ~/.ssh/id_rsa.pub >> ~vagrant/.ssh/authorized_keys
 
-echo ~/.ssh/authorized_keys
-
 echo 'Port 2222' | sudo tee -a  /etc/ssh/sshd_config
 sudo service ssh reload
 
