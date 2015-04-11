@@ -10,12 +10,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.network "forwarded_port", guest: 8000, host: 8000
 
-  config.vm.provision 'ansible' do |ansible|
-    ansible.sudo = true
-    ansible.inventory_path = 'ansible/inventory/vagrant'
-    ansible.playbook = 'ansible/main.yml'
-    ansible.verbose = 'v'
-    ansible.limit = 'development'
-  end
-
+  config.vm.provision 'shell',
+    path: "bash/provision.sh"
 end
