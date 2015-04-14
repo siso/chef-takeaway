@@ -15,7 +15,6 @@
   file: src={{ item.path }} dest={{ item.dest }} state=link
   with_items:
       - { path: '/vagrant/share', dest: '/home/vagrant/share' }
-      - { path: '/vagrant/share/chef', dest: '/home/vagrant/chef' }
 
 - name: copy user's files
   copy:

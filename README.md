@@ -35,6 +35,12 @@ cd chef
 berks cookbook helloworld
 ```
 
+## Chef
+
+`~/chef` directory is mounted from host onto guest system in `/home/vagrant/chef`.
+
+**WARNING** - That means that files and dirs in `/home/vagrant/chef` deleted on the guest machine, are deleted on the host machine too!
+
 ## Test Kitchen drivers
 
 List of Test Kitchen drivers currently being installed:
