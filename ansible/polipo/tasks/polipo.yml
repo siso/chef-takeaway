@@ -17,12 +17,17 @@
     - kitchen-template.yml
     - kitchen.local.yml
 
-- name:
-  command: docker build -t="docker-polipo" .
-  args:
-    chdir: /home/vagrant/polipo
+- name: check or build image
+  docker_image:
+    name: docker-polipo
+    state: present
+    path: /home/vagrant/polipo
 
-- name:
-  command: docker run -d -h polipo -p 8123:8123 docker-polipo
-  args:
-    chdir: /home/vagrant/polipo
+- name: start polipo container
+  docker:
+    name: polipo
+    image: docker-polipo
+    ports:
+      - "8123:8123"
+    hostname:
+      - "polipo"
