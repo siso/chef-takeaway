@@ -10,15 +10,9 @@ It's portable and fast!
 
 ## Quickstart
 
-Install [Ansible](http://www.ansible.com/):
-
-```shell
-pip install ansible
-```
-
 Use Vagrant to create and provision VitualBox machine:
 
-```
+```shell
 vagrant up
 ```
 
