@@ -6,3 +6,5 @@ share/
 
 # KitchenCI
 .kitchen
+
+*.bak
