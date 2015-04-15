@@ -1,6 +1,6 @@
 # vagrant-cheftdd
 
-version: 0.1.2
+version: 0.1.3
 
 ## TDD with Chef - Vagrant, Ansible, Test Kitchen and Docker
 
@@ -93,6 +93,21 @@ $ kitchen driver discover
     kitchen-vsphere                   0.2.0
     kitchen-zcloudjp                  0.5.0
     test-kitchen-provisioners         0.1
+```
+
+## Vagrant
+
+Supported Cloud Providers:
+
+```shell
+$ vagrant plugin list
+vagrant-aws (0.6.0)
+vagrant-azure (1.1.1)
+vagrant-digitalocean (0.7.3)
+vagrant-google (0.1.4)
+vagrant-proxyconf (1.5.0)
+vagrant-rackspace (0.1.10)
+vagrant-share (1.1.3, system)
 ```
 
 ## License
