@@ -110,6 +110,16 @@ vagrant-rackspace (0.1.10)
 vagrant-share (1.1.3, system)
 ```
 
+## SSH
+
+Optionally SSH key and configuration file can be copied to vagrant box, e.g. to manage (SSH or run KitchenCI) server via bastion:
+
+```shell
+scp -P 2222 -i .vagrant/machines/default/virtualbox/private_key ~/.ssh/id_rsa vagrant@localhost:/home/vagrant/.ssh/
+scp -P 2222 -i .vagrant/machines/default/virtualbox/private_key ~/.ssh/id_rsa.pub vagrant@localhost:/home/vagrant/.ssh/
+scp -P 2222 -i .vagrant/machines/default/virtualbox/private_key ~/.ssh/config vagrant@localhost:/home/vagrant/.ssh/
+```
+
 ## License
 
 Copyright (C) 2015 Simone Soldateschi
