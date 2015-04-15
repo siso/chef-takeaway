@@ -21,16 +21,14 @@
 
 # Vagrant - yeah, Vagrant inside Vagrant
 - name: Download Vagrant
-  shell="wget -O /home/vagrant/download/{{ vagrant_pkg_file }} {{ vagrant_pkg_url }}"
+  shell: "wget -O /home/vagrant/download/{{ vagrant_pkg_file }} {{ vagrant_pkg_url }}"
   sudo: yes
   sudo_user: vagrant
   args:
     creates: /home/vagrant/download/{{ vagrant_pkg_file }}
 
 - name: Install Vagrant
-  shell="dpkg -i /home/vagrant/download/{{ vagrant_pkg_file }}"
-  args:
-    creates: /home/vagrant/download/{{ vagrant_pkg_file }}
+  shell: "dpkg -i /home/vagrant/download/{{ vagrant_pkg_file }}"
 
 - name: Install Vagrant plugins
   shell: vagrant plugin install {{ item }}
