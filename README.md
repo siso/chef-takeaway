@@ -1,6 +1,6 @@
 # vagrant-cheftdd
 
-version: 0.1.0
+version: 0.1.2
 
 ## TDD with Chef - Vagrant, Ansible, Test Kitchen and Docker
 
