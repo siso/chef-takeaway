@@ -1,0 +1,13 @@
+---
+
+- name: Install polipo
+  apt: pkg="polipo" state=latest update_cache=yes cache_valid_time=600
+
+- name: create polipo cache dir
+  file: path="/usr/local/var/lib/polipo_cache/" state=directory owner=proxy group=proxy
+
+- name: copy polipo configuration file
+  copy: src="etc/polipo/config" dest="/etc/polipo/config" owner="proxy" group="root" mode="0644"
+
+- name: start polipo daemon
+  service: name=polipo enabled=yes state=started
