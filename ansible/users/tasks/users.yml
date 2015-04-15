@@ -27,6 +27,14 @@
     - .bash_aliases
     - .bashrc
 
+- name: create user's SSH key
+  command: ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
+  args:
+    chdir: /home/vagrant
+    creates: /home/vagrant/.ssh/id_rsa
+  sudo: yes
+  sudo_user: vagrant
+
 - name:
   command: git clone https://github.com/magicmonty/bash-git-prompt.git .bash-git-prompt
   args:
