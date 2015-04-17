@@ -14,3 +14,10 @@
     - mc
     - mtr
     - screen
+    - vim
+
+- name: Update debian alternatives
+  command: /usr/sbin/update-alternatives --set {{ item.name }} {{ item.path }}
+  with_items:
+    - name: editor
+      path: /usr/bin/vim.basic

@@ -1,6 +1,10 @@
 vagrant-cheftdd CHANGELOG
 ==========================
 
+0.1.5
+----
+- [Simone Soldateschi] - Update Debian alternatives (e.g. set Vim as default editor)
+
 0.1.4
 ----
 - [Simone Soldateschi] - Use Packer to build VirtualBox box, and Ansible to provision it
