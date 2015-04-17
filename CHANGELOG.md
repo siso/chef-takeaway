@@ -1,6 +1,9 @@
 vagrant-cheftdd CHANGELOG
 ==========================
 
+0.1.4
+----
+- [Simone Soldateschi] - Use Packer to build VirtualBox box, and Ansible to provision it
 
 0.1.3
 ----
