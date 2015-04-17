@@ -8,5 +8,5 @@ VM_NAME=debian-7.8.0-amd64-cheftdd
 #export PACKER_LOG=1
 rm ${VM_NAME}.box || true
 packer build -only virtualbox-iso ${VM_NAME}-virtualbox.json
-vagrant box remove vagrant_machine || true
-vagrant box add vagrant_machine ${VM_NAME}.box
+vagrant box remove $VM_NAME || true
+vagrant box add $VM_NAME ${VM_NAME}.box
