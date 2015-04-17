@@ -120,6 +120,15 @@ scp -P 2222 -i .vagrant/machines/default/virtualbox/private_key ~/.ssh/id_rsa.pu
 scp -P 2222 -i .vagrant/machines/default/virtualbox/private_key ~/.ssh/config vagrant@localhost:/home/vagrant/.ssh/
 ```
 
+## Packer
+
+Build VirtualBox box with [Packer](https://www.packer.io/):
+
+```shell
+cd packer
+. create_box
+```
+
 ## License
 
 Copyright (C) 2015 Simone Soldateschi
