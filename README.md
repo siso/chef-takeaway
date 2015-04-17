@@ -131,6 +131,14 @@ cd packer
 . create_box
 ```
 
+Once Vagrant box is created, it can be added to Vagrant boxes:
+
+```shell
+$ vagrant box add "siso/debian-7.8.0-amd64-cheftdd" debian-7.8.0-amd64-cheftdd.box
+```
+
+Vagrant boxes are locate in `~/.vagrant.d/boxes/`.
+
 ## License
 
 Copyright (C) 2015 Simone Soldateschi
