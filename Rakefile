@@ -4,6 +4,7 @@ task :default => [:validate]
 
 desc 'Validate all the packer templates'
 task :validate do
+  Dir.chdir('./packer')
   Dir.glob('*/*.json').sort.each do |template|
     puts Rainbow("packer validate #{template}").green
     unless system "packer validate #{template}"

@@ -13,3 +13,5 @@ share/
 packer_cache
 output-virtualbox-iso
 *.box
+
+Gemfile.lock
