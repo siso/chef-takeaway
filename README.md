@@ -1,5 +1,7 @@
 # vagrant-cheftdd
 
+[![Build Status](https://travis-ci.org/siso/vagrant-cheftdd.png)](https://travis-ci.org/siso/vagrant-cheftdd)
+
 version: 0.1.4
 
 ## TDD with Chef - Vagrant, Ansible, Test Kitchen and Docker
