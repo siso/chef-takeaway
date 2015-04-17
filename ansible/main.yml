@@ -4,6 +4,7 @@
   roles:
     - base
     - users
+    - packer
     - chef
     - polipo
   vars:

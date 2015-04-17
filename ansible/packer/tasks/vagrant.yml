@@ -1,0 +1,9 @@
+---
+- name: set up vagrant
+  shell: "date > /etc/vagrant_box_build_time"
+
+- name: customise the message of the day
+  shell: "echo 'Welcome to your Vagrant-built virtual machine.' > /var/run/motd"
+
+- name: Install nfs client
+  apt: pkg="nfs-common" state=latest update_cache=yes cache_valid_time=600

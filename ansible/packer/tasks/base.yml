@@ -1,0 +1,16 @@
+---
+- name: Install Linux headers
+  shell: aptitude install -y linux-headers-$(uname -r)
+
+- name: Install basic packages
+  apt:
+    pkg: "{{ item }}"
+    state: latest
+    update_cache: yes
+    cache_valid_time: 600
+  with_items:
+    - build-essential
+    - libreadline-gplv2-dev
+    - libssl-dev
+    - python-dev
+    - zlib1g-dev
