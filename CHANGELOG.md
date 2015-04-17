@@ -1,6 +1,10 @@
 vagrant-cheftdd CHANGELOG
 ==========================
 
+0.1.6
+----
+- [Simone Soldateschi] - Add TrevisCI integration
+
 0.1.5
 ----
 - [Simone Soldateschi] - Update Debian alternatives (e.g. set Vim as default editor)
