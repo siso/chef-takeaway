@@ -137,7 +137,7 @@ Once Vagrant box is created, it can be added to Vagrant boxes:
 $ vagrant box add "siso/debian-7.8.0-amd64-cheftdd" debian-7.8.0-amd64-cheftdd.box
 ```
 
-Vagrant boxes are locate in `~/.vagrant.d/boxes/`.
+Vagrant boxes are located in `~/.vagrant.d/boxes/`.
 
 ## License
 
