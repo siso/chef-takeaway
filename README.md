@@ -1,14 +1,11 @@
-# vagrant-cheftdd
+# chef-takeaway
 
-[![Build Status](https://travis-ci.org/siso/vagrant-cheftdd.png)](https://travis-ci.org/siso/vagrant-cheftdd)
+[![Build Status](https://travis-ci.org/siso/chef-takeaway.png)](https://travis-ci.org/siso/chef-takeaway)
 
 version: 0.1.6
 
-## TDD with Chef - Vagrant, Ansible, Test Kitchen and Docker
-
-Let Vagrant provision VirtualBox box with Ansible, and test with Test Kitchen and Docker.
-
-It's portable and fast!
+## Synopsis
+Takeaway box to get cracking on Chef, Vagrant, Ansible, Test Kitchen and Docker
 
 ## Quickstart
 
