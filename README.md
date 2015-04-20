@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/siso/chef-takeaway.png)](https://travis-ci.org/siso/chef-takeaway)
 
-version: 0.1.6
+version: 0.1.7
 
 ## Synopsis
 Takeaway box to get cracking on Chef, Vagrant, Ansible, Test Kitchen and Docker
