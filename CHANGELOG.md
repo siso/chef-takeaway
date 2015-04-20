@@ -1,6 +1,10 @@
 vagrant-cheftdd CHANGELOG
 ==========================
 
+0.1.7
+----
+- [Simone Soldateschi] - Install OpenStack clients
+
 0.1.6
 ----
 - [Simone Soldateschi] - Add TrevisCI integration

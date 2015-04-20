@@ -1,0 +1,24 @@
+---
+- name: resolve dependencies before installing pip packages
+  apt:
+    pkg: "{{ item }}"
+    state: latest
+    update_cache: yes
+    cache_valid_time: 600
+  with_items:
+    - libffi-dev
+
+- name: Install pip packages
+  pip:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - pyrax
+    - python-heatclient
+    - python-novaclient
+    - python-openstackclient
+    - python-openstacksdk
+    - python-swiftclient
+    - rackspace-auth-openstack
+    - rackspace-novaclient
+    - supernova
