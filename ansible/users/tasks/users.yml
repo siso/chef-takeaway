@@ -1,44 +1,56 @@
 ---
+- group: name=foo state=present gid=2000
+
+- name: create foo user
+  user:
+    name: "foo"
+    generate_ssh_key: "yes"
+    ssh_key_bits: 2048
+    ssh_key_file: ".ssh/id_rsa"
+    shell: "/bin/bash"
+    uid: 2000
+    group: 2000
+
 - name: create user's dirs
   file:
     path: "{{ item }}"
     state: directory
-    owner: vagrant
-    group: vagrant
+    owner: foo
+    group: foo
   with_items:
-    - /home/vagrant/download
-    - /home/vagrant/tmp
-    - /vagrant/share
-    - /vagrant/share/chef
+    - /home/foo/download
+    - /home/foo/tmp
+    - /foo/share
+    - /foo/share/chef
 
 - name: symlink share and chef dirs
   file: src={{ item.path }} dest={{ item.dest }} state=link
   with_items:
-      - { path: '/vagrant/share', dest: '/home/vagrant/share' }
+      - { path: '/vagrant/share', dest: '/home/foo/share' }
 
 - name: copy user's files
   copy:
-    src: home/vagrant/{{ item }}
-    dest: /home/vagrant
-    owner: vagrant
-    group: vagrant
+    src: home/foo/{{ item }}
+    dest: /home/foo
+    owner: foo
+    group: foo
     mode: 0644
   with_items:
     - .bash_aliases
     - .bashrc
 
-- name: create user's SSH key
-  command: ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
-  args:
-    chdir: /home/vagrant
-    creates: /home/vagrant/.ssh/id_rsa
-  sudo: yes
-  sudo_user: vagrant
+# - name: create user's SSH key
+#   command: ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
+#   args:
+#     chdir: /home/foo
+#     creates: /home/foo/.ssh/id_rsa
+#   sudo: yes
+#   sudo_user: vagrant
 
 - name:
   command: git clone https://github.com/magicmonty/bash-git-prompt.git .bash-git-prompt
   args:
-    chdir: /home/vagrant
-    creates: /home/vagrant/.bash-git-prompt
+    chdir: /home/foo
+    creates: /home/foo/.bash-git-prompt
   sudo: yes
-  sudo_user: vagrant
+  sudo_user: foo

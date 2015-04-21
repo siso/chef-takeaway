@@ -4,6 +4,7 @@ vagrant-cheftdd CHANGELOG
 NEW
 ----
 - [Simone Soldateschi] - Add `./vagrant/Vagrantfile` to run 'chef-takeaway.box'
+- [Simone Soldateschi] - Add user 'foo', to develop Chef stuff
 
 0.1.7
 ----
