@@ -5,7 +5,10 @@ development
 myenv="development"
 
 [development]
-127.0.0.1 nickname=local branch=develop ansible_ssh_port=2222 ansible_ssh_host=127.0.0.1 ansible_ssh_user=vagrant private_key_file=~/.vagrant.d/insecure_private_key
+chef-takeaway-devel nickname=local branch=develop ansible_ssh_port=20022 ansible_ssh_host=127.0.0.1 ansible_ssh_user=vagrant private_key_file=~/.vagrant.d/insecure_private_key
+
+[packer]
+chef-takeaway-packer nickname=local branch=develop ansible_ssh_port=30022 ansible_ssh_host=127.0.0.1 ansible_ssh_user=vagrant private_key_file=~/.vagrant.d/insecure_private_key
 
 [development:vars]
 myenv="development"
