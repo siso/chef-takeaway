@@ -18,25 +18,16 @@ VAGRANTFILE_API_VERSION = '2'
 
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = 'chef/debian-7.6'
-  config.vm.box_url = 'https://atlas.hashicorp.com/chef/boxes/debian-7.6'
+  config.vm.box = 'chef-takeaway'
+  # TODO -- UPDATE config.vm.box_url TO POINT TO CLOUD FILES/CDN
+  # config.vm.box_url = 'http://10.16.11.60:8080/chef-takeaway.box'
 
-  config.vm.hostname = 'chef-takeaway-builder'
+  config.vm.hostname = 'chef-takeaway'
 
   config.vm.provider :virtualbox do |vb|
     vb.gui = vm_gui
     vb.memory = vm_memory
     vb.cpus = vm_cpus
-  end
-
-  #config.vm.network "forwarded_port", guest: 8000, host: 8000
-
-  config.vm.provision 'ansible' do |ansible|
-    ansible.sudo = true
-    ansible.inventory_path = 'ansible/inventory/vagrant'
-    ansible.playbook = 'ansible/main.yml'
-    ansible.verbose = 'v'
-    ansible.limit = 'development'
   end
 
   # Uncomment below to enable NFS for sharing the host machine into the VM, e.g.:

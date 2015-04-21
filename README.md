@@ -9,6 +9,16 @@ Takeaway box to get cracking on Chef, Vagrant, Ansible, Test Kitchen and Docker
 
 ## Quickstart
 
+```shell
+git clone git@github.com:siso/chef-takeaway.git
+cd chef-takeaway
+vagrant up
+```
+
+## How-to
+
+### Provision with Ansible
+
 Install [Ansible](http://www.ansible.com/):
 
 ```shell
@@ -18,14 +28,12 @@ pip install ansible
 Use Vagrant to create and provision VitualBox machine:
 
 ```
+cd vagrant
 vagrant up
+vagrant provision
 ```
 
-SSH in to VirtualBox vm:
-
-```shell
-vagrant ssh
-```
+### Develop Chef Cookbook
 
 Start cooking with [Chef](https://www.chef.io/):
 
@@ -34,11 +42,7 @@ cd chef
 berks cookbook helloworld
 ```
 
-## Chef
-
-`~/chef` directory is mounted from host onto guest system in `/home/vagrant/chef`.
-
-**WARNING** - That means that files and dirs in `/home/vagrant/chef` deleted on the guest machine, are deleted on the host machine too!
+**WARNING** - `~/chef` directory is mounted from host onto guest system in `/home/vagrant/chef`. *Files and dirs in `/home/vagrant/chef` deleted on the guest machine, are deleted on the host machine too!*
 
 ## Test Kitchen drivers
 

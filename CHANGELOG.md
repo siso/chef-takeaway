@@ -1,6 +1,10 @@
 vagrant-cheftdd CHANGELOG
 ==========================
 
+NEW
+----
+- [Simone Soldateschi] - Add `./vagrant/Vagrantfile` to run 'chef-takeaway.box'
+
 0.1.7
 ----
 - [Simone Soldateschi] - Install OpenStack clients
