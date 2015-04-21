@@ -10,6 +10,7 @@ shared_folders = {"#{Dir.home}/chef" => '/home/vagrant/chef'}
 vm_gui = false
 vm_memory = 1024
 vm_cpus = 1
+vm_forward_ssh_port = 20022
 
 # ---- PLEASE, DO NO EDIT AFTER THIS LINE ----
 
@@ -22,6 +23,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box_url = 'https://atlas.hashicorp.com/chef/boxes/debian-7.6'
 
   config.vm.hostname = 'chef-takeaway-builder'
+
+  config.vm.network :forwarded_port, guest: 22, host: vm_forward_ssh_port, id: 'ssh', auto_correct: false
 
   config.vm.provider :virtualbox do |vb|
     vb.gui = vm_gui

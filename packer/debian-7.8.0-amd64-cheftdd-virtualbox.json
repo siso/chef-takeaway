@@ -39,6 +39,8 @@
       "ssh_password": "vagrant",
       "ssh_username": "vagrant",
       "ssh_port": "{{user `ssh_port`}}",
+      "ssh_host_port_min": "30022",
+      "ssh_host_port_max": "30022",
       "ssh_wait_timeout": "{{user `ssh_wait_timeout`}}",
       "type": "virtualbox-iso",
       "vm_name": "{{user `vm_name`}}",
@@ -70,7 +72,10 @@
       "type": "ansible-local",
       "pause_before": "5s",
       "playbook_dir": "../ansible",
-      "playbook_file": "../ansible/main.yml"
+      "playbook_file": "../ansible/main.yml",
+      "role_paths": ["../ansible"],
+      "inventory_file": "../ansible/inventory/vagrant",
+      "extra_arguments": ["--limit","packer"]
     },
     {
       "type": "shell",
