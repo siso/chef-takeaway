@@ -1,6 +1,6 @@
 ---
-- name: siso - Chef TDD Box
-  hosts: servers
+- name: siso - Chef TDD Box 'chef-takeaway'
+  hosts: all
   roles:
     - base
     - users
