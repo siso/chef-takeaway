@@ -1,10 +1,11 @@
 vagrant-cheftdd CHANGELOG
 ==========================
 
-NEW
+0.1.8
 ----
 - [Simone Soldateschi] - Add `./vagrant/Vagrantfile` to run 'chef-takeaway.box'
 - [Simone Soldateschi] - Add user 'foo', to develop Chef stuff
+- [Simone Soldateschi] - Fix Packer provisioning with Ansible
 
 0.1.7
 ----

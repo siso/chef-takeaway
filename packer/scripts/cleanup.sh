@@ -1,3 +1,5 @@
+#!/bin/bash -eux
+
 # Clean up
 apt-get -y remove linux-headers-$(uname -r) build-essential
 apt-get -y autoremove
@@ -16,3 +18,10 @@ rm /lib/udev/rules.d/75-persistent-net-generator.rules
 
 echo "Adding a 2 sec delay to the interface up, to make the dhclient happy"
 echo "pre-up sleep 2" >> /etc/network/interfaces
+
+# Zero out the rest of the free space using dd, then delete the written file.
+dd if=/dev/zero of=/EMPTY bs=1M
+rm -f /EMPTY
+
+# Add `sync` so Packer doesn't quit too early, before the large file is deleted.
+sync
