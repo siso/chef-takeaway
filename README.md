@@ -9,27 +9,32 @@ Takeaway box to get cracking on Chef, Vagrant, Ansible, Test Kitchen and Docker
 
 ## Quickstart
 
+Download *chef-takeaway* box for Vagrant:
+
+```shell
+wget https://XXX
+tar xvfz chef-takeaway.tgz
+cd chef-takeaway
+vagrant up
+vagrant ssh
+```
+
+## How-to
+
+### Provision 'chef-takeaway' with Vagrant and Ansible
+
+Clone *chef-takeaway* repository from GitHub:
+
 ```shell
 git clone git@github.com:siso/chef-takeaway.git
 cd chef-takeaway
 vagrant up
 ```
 
-## How-to
-
-### Provision with Ansible
-
 Install [Ansible](http://www.ansible.com/):
 
 ```shell
 pip install ansible
-```
-
-Use Vagrant to create and provision VitualBox machine:
-
-```
-cd vagrant
-vagrant up
 vagrant provision
 ```
 
@@ -118,9 +123,9 @@ vagrant-share (1.1.3, system)
 Optionally SSH key and configuration file can be copied to vagrant box, e.g. to manage (SSH or run KitchenCI) server via bastion:
 
 ```shell
-scp -P 2222 -i .vagrant/machines/default/virtualbox/private_key ~/.ssh/id_rsa vagrant@localhost:/home/vagrant/.ssh/
-scp -P 2222 -i .vagrant/machines/default/virtualbox/private_key ~/.ssh/id_rsa.pub vagrant@localhost:/home/vagrant/.ssh/
-scp -P 2222 -i .vagrant/machines/default/virtualbox/private_key ~/.ssh/config vagrant@localhost:/home/vagrant/.ssh/
+scp -P 30022 -i .vagrant/machines/default/virtualbox/private_key ~/.ssh/id_rsa vagrant@localhost:/home/vagrant/.ssh/
+scp -P 30022 -i .vagrant/machines/default/virtualbox/private_key ~/.ssh/id_rsa.pub vagrant@localhost:/home/vagrant/.ssh/
+scp -P 30022 -i .vagrant/machines/default/virtualbox/private_key ~/.ssh/config vagrant@localhost:/home/vagrant/.ssh/
 ```
 
 ## Packer
@@ -129,16 +134,27 @@ Build VirtualBox box with [Packer](https://www.packer.io/):
 
 ```shell
 cd packer
-. create_box
+packer build debian-7.8.0-amd64-cheftdd-virtualbox.json
 ```
 
 Once Vagrant box is created, it can be added to Vagrant boxes:
 
 ```shell
-$ vagrant box add "siso/debian-7.8.0-amd64-cheftdd" debian-7.8.0-amd64-cheftdd.box
+$ vagrant box add "siso/chef-takeaway" chef-takeaway.box
 ```
 
-Vagrant boxes are located in `~/.vagrant.d/boxes/`.
+## Contribute
+
+- Fork the repository on Github
+- Create a named feature branch (like add_component_x)
+- Write your change
+- Write tests for your change (if applicable)
+- Run the tests, ensuring they all pass
+- Submit a Pull Request using Github
+
+## Authors
+
+- Author:: Simone Soldateschi (simone.soldatechi@gmail.com)
 
 ## License
 

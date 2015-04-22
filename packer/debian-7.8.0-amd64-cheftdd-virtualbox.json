@@ -65,7 +65,8 @@
             "/usr/bin/aptitude update",
             "/usr/bin/aptitude -y safe-upgrade",
             "/usr/bin/aptitude install -y python-dev python-pip",
-            "/usr/bin/pip install ansible"
+            "/usr/bin/pip install ansible",
+            "echo 'vagrant    ALL=(ALL)  NOPASSWD:ALL' >> /etc/sudoers"
         ]
     },
     {
@@ -74,8 +75,7 @@
       "playbook_dir": "../ansible",
       "playbook_file": "../ansible/main.yml",
       "role_paths": ["../ansible"],
-      "inventory_file": "../ansible/inventory/vagrant",
-      "extra_arguments": ["--limit","packer"]
+      "extra_arguments": ["-vvvv", "-u", "root"]
     },
     {
       "type": "shell",

@@ -1,6 +1,8 @@
 ---
 - name: siso - Chef TDD Box 'chef-takeaway'
   hosts: all
+  # user: vagrant
+  # connection: ssh # or paramiko
   roles:
     - base
     - users
@@ -11,3 +13,5 @@
   vars:
     vagrant_pkg_file: vagrant_1.7.2_x86_64.deb
     vagrant_pkg_url: https://dl.bintray.com/mitchellh/vagrant/{{ vagrant_pkg_file }}
+  sudo: true
+  # sudo_user: root

@@ -4,6 +4,7 @@ vagrant-cheftdd CHANGELOG
 NEW
 ----
 - [Simone Soldateschi] - Add `./vagrant/Vagrantfile` to run 'chef-takeaway.box'
+- [Simone Soldateschi] - Fix Packer provisioning with Ansible
 
 0.1.7
 ----

@@ -1,4 +1,6 @@
 ---
+- debug: msg="current user {{ ansible_ssh_user }}"
+
 - name: Install basic packages
   apt:
     pkg: "{{ item }}"
@@ -15,6 +17,8 @@
     - mtr
     - screen
     - vim
+  sudo: true
+  sudo_user: root
 
 - name: Update debian alternatives
   command: /usr/sbin/update-alternatives --set {{ item.name }} {{ item.path }}

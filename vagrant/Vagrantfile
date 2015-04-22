@@ -10,6 +10,7 @@ shared_folders = {"#{Dir.home}/chef" => '/home/vagrant/chef'}
 vm_gui = false
 vm_memory = 1024
 vm_cpus = 1
+vm_forward_ssh_port = 30022
 
 # ---- PLEASE, DO NO EDIT AFTER THIS LINE ----
 
@@ -22,7 +23,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # TODO -- UPDATE config.vm.box_url TO POINT TO CLOUD FILES/CDN
   # config.vm.box_url = 'http://10.16.11.60:8080/chef-takeaway.box'
 
+  # config.ssh.username = 'vagrant'
+  # config.ssh.password = 'vagrant'
+
   config.vm.hostname = 'chef-takeaway'
+
+  config.vm.network :forwarded_port, guest: 22, host: vm_forward_ssh_port, id: 'ssh', auto_correct: false
 
   config.vm.provider :virtualbox do |vb|
     vb.gui = vm_gui
@@ -36,6 +42,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #
   shared_folders.each_with_index do |(host_folder, guest_folder), index|
     if File.directory?(host_folder)
+      puts "synced folder host_folder:#{host_folder.to_s} --> guest_folder:#{guest_folder.to_s}"
       # config.vm.synced_folder host_folder.to_s, guest_folder.to_s, id: config.vm.hostname, nfs: true, mount_options: ['nolock,vers=3,udp'], create: true
       config.vm.synced_folder host_folder.to_s, guest_folder.to_s, id: config.vm.hostname, create: true
     else
