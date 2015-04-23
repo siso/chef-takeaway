@@ -44,7 +44,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Uncomment below to enable NFS for sharing the host machine into the VM, e.g.:
   #
-  #   config.vm.synced_folder ".", "/home/foo/share", id: "vagrant", :nfs => true, :mount_options => ['nolock,vers=3,udp']
+  #   config.vm.synced_folder ".", "/home/vagrant/share", id: "vagrant", :nfs => true, :mount_options => ['nolock,vers=3,udp']
   #
   shared_folders.each_with_index do |(host_folder, guest_folder), index|
     if File.directory?(host_folder)

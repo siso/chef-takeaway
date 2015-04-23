@@ -3,39 +3,39 @@
 
 # Chef-df
 - name: Download Chef-dk
-  command: /usr/bin/wget https://opscode-omnibus-packages.s3.amazonaws.com/debian/6/x86_64/chefdk_0.4.0-1_amd64.deb -O /home/foo/download/chefdk_0.4.0-1_amd64.deb
+  command: /usr/bin/wget https://opscode-omnibus-packages.s3.amazonaws.com/debian/6/x86_64/chefdk_0.4.0-1_amd64.deb -O /home/vagrant/download/chefdk_0.4.0-1_amd64.deb
   args:
-    creates: /home/foo/download/chefdk_0.4.0-1_amd64.deb
+    creates: /home/vagrant/download/chefdk_0.4.0-1_amd64.deb
   sudo: yes
-  sudo_user: foo
+  sudo_user: vagrant
 
 - name: Install Chef-dk
-  command: dpkg -i /home/foo/download/chefdk_0.4.0-1_amd64.deb
+  command: dpkg -i /home/vagrant/download/chefdk_0.4.0-1_amd64.deb
 
 - name: Set up Chef-dk environment
   shell: chef shell-init bash >> ~/.bashrc
   args:
-    chdir: /home/foo
+    chdir: /home/vagrant
   sudo: yes
-  sudo_user: foo
+  sudo_user: vagrant
 
 # Vagrant - yeah, Vagrant inside Vagrant
 - name: Download Vagrant
-  shell: "wget -O /home/foo/download/{{ vagrant_pkg_file }} {{ vagrant_pkg_url }}"
+  shell: "wget -O /home/vagrant/download/{{ vagrant_pkg_file }} {{ vagrant_pkg_url }}"
   sudo: yes
-  sudo_user: foo
+  sudo_user: vagrant
   args:
-    creates: /home/foo/download/{{ vagrant_pkg_file }}
+    creates: /home/vagrant/download/{{ vagrant_pkg_file }}
 
 - name: Install Vagrant
-  shell: "dpkg -i /home/foo/download/{{ vagrant_pkg_file }}"
+  shell: "dpkg -i /home/vagrant/download/{{ vagrant_pkg_file }}"
 
 - name: Install Vagrant plugins
   shell: vagrant plugin install {{ item }}
   args:
-    chdir: /home/foo
+    chdir: /home/vagrant
   sudo: yes
-  sudo_user: foo
+  sudo_user: vagrant
   with_items:
     - vagrant-proxyconf
     - vagrant-aws
@@ -56,13 +56,13 @@
   args:
     creates: /usr/bin/docker
 
-- name: Giving non-root access for foo user
-  command: adduser foo docker
+- name: Giving non-root access for vagrant user
+  command: adduser vagrant docker
 
 - name: Restart docker daemon to apply changes
   service: name=docker state=restarted
 
-- name: Check foo user can run docker
+- name: Check vagrant user can run docker
   command: "docker ps"
   register: docker_ps
   failed_when: >
@@ -72,10 +72,10 @@
 - name: Install test-kitchen drivers
   shell: eval "$(chef shell-init bash)" && gem install "{{ item }}"
   # args:
-  #   chdir: /home/foo
+  #   chdir: /home/vagrant
   #   executable: /bin/bash
   sudo: yes
-  sudo_user: foo
+  sudo_user: vagrant
   with_items:
     - kitchen-docker
     - kitchen-rackspace
