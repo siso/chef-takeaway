@@ -61,13 +61,21 @@
         "type": "shell",
         "execute_command": "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'",
         "inline": [
-            "sleep 30",
-            "/usr/bin/aptitude update",
-            "/usr/bin/aptitude -y safe-upgrade",
-            "/usr/bin/aptitude install -y python-dev python-pip",
-            "/usr/bin/pip install ansible",
-            "echo 'vagrant    ALL=(ALL)  NOPASSWD:ALL' >> /etc/sudoers"
+            "sleep 30"
         ]
+    },
+    {
+      "type": "shell",
+      "pause_before": "5s",
+      "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'",
+      "override": {
+        "virtualbox-iso": {
+          "scripts": [
+            "scripts/base.sh",
+            "scripts/vagrant.sh"
+          ]
+        }
+      }
     },
     {
       "type": "ansible-local",

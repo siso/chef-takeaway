@@ -11,6 +11,9 @@
     - /vagrant/share
     - /vagrant/share/chef
 
+- name: create SSH dir
+  file: path=/home/vagrant/.ssh owner=vagrant group=vagrant mode=0700 state=directory
+
 - name: symlink share and chef dirs
   file: src={{ item.path }} dest={{ item.dest }} state=link
   with_items:
@@ -33,5 +36,21 @@
   args:
     chdir: /home/vagrant
     creates: /home/vagrant/.bash-git-prompt
+  sudo: yes
+  sudo_user: vagrant
+
+- name: add insecure SSH key to authorised keys for vagrant user
+  shell: "wget -q -O- 'https://github.com/mitchellh/vagrant/raw/master/keys/vagrant.pub' | tee -a /home/vagrant/.ssh/authorized_keys"
+  sudo: yes
+  sudo_user: vagrant
+
+- name: create SSH authorized_keys file
+  file: path=/home/vagrant/.ssh/authorized_keys owner=vagrant group=vagrant mode=0600
+
+- name: gather ssh public keys
+  command: ssh-keyscan -t rsa {{ item }}
+  with_items:
+    - github.com
+    - bitbucket.com
   sudo: yes
   sudo_user: vagrant
