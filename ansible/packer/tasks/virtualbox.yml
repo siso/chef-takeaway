@@ -25,15 +25,15 @@
     - linux-headers-amd64
     # - linux-headers-3.2.0-4-amd64
 
-- debug: msg="Install the VirtualBox guest additions"
-
-- shell: "mount -o loop VBoxGuestAdditions.iso /mnt"
-
-- shell: "yes|sh /mnt/VBoxLinuxAdditions.run --nox11"
-
-- shell: "umount /mnt"
+# - debug: msg="Install the VirtualBox guest additions"
+#
+# - shell: "mount -o loop VBoxGuestAdditions.iso /mnt"
+#
+# - shell: "yes|sh /mnt/VBoxLinuxAdditions.run --nox11"
+#
+# - shell: "umount /mnt"
 
 # - shell: "rm -f VBoxLinuxAdditions.iso"
 
-- name: start the newly build driver
-  service: name=vboxadd state=started enabled=yes
+# - name: start the newly build driver
+#   service: name=vboxadd state=started enabled=yes

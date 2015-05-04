@@ -2,12 +2,12 @@
 
 [![Build Status](https://travis-ci.org/siso/chef-takeaway.png)](https://travis-ci.org/siso/chef-takeaway)
 
-version: 0.1.8
+version: 0.1.9
 
 ## Synopsis
 Takeaway box to get cracking on Chef, Vagrant, Ansible, Test Kitchen and Docker
 
-## Quickstart
+## TODO -- Quickstart
 
 Download *chef-takeaway* box for Vagrant:
 
@@ -140,7 +140,8 @@ packer build debian-7.8.0-amd64-cheftdd-virtualbox.json
 Once Vagrant box is created, it can be added to Vagrant boxes:
 
 ```shell
-$ vagrant box add "siso/chef-takeaway" chef-takeaway.box
+$ cd vagrant
+$ vagrant box add chef-takeaway ../packer/virtualbox/chef-takeaway-wheezy.box
 ```
 
 ## Contribute

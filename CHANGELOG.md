@@ -1,6 +1,10 @@
 vagrant-cheftdd CHANGELOG
 ==========================
 
+0.1.9
+----
+- [Simone Soldateschi] - Fix issues with VBoxAdditions and vboxfs
+
 0.1.8
 ----
 - [Simone Soldateschi] - Add `./vagrant/Vagrantfile` to run 'chef-takeaway.box'
