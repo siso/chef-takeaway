@@ -7,7 +7,7 @@
     "ssh_wait_timeout": "10000s",
     "iso_url": "http://cdimage.debian.org/debian-cd/7.8.0/amd64/iso-cd/debian-7.8.0-amd64-netinst.iso",
     "iso_md5": "a91fba5001cf0fbccb44a7ae38c63b6e",
-    "vm_name": "chef-takeaway"
+    "vm_name": "chef-takeaway-wheezy"
   },
   "builders": [
     {
@@ -53,7 +53,7 @@
   "post-processors": [
     {
       "type": "vagrant",
-      "output": "{{user `vm_name`}}.box"
+      "output": "./{{.Provider}}/{{user `vm_name`}}.box"
     }
   ],
   "provisioners": [

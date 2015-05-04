@@ -1,4 +1,4 @@
 ---
 - include: base.yml
 - include: vagrant.yml
-# - include: virtualbox.yml
+- include: virtualbox.yml
