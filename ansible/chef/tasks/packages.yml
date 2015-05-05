@@ -85,3 +85,13 @@
   register: chef_verify
   failed_when: >
     chef_verify.rc != 0
+
+- name: copy scripts
+  copy:
+    src: usr/local/bin{{ item }}
+    dest: /usr/local/bin
+    owner: root
+    group: root
+    mode: 0755
+  with_items:
+    - edit_data_bag.rb
