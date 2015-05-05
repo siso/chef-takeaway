@@ -27,7 +27,8 @@ Login to the *chef-takeaway* box:
 ```shell
 vagrant ssh
 ```
-For Windows users, you may need to link Vagrant to the Git SSH client, by adding "C:\Users\<USER_NAME>\AppData\Local\Programs\Git\bin" to the Path environment variable.
+
+Windows users may need to link Vagrant to the Git SSH client, by adding `"C:\Users\<USER_NAME>\AppData\Local\Programs\Git\bin"` to the Path environment variable.
 
 ## How-to and Info
 
