@@ -8,13 +8,11 @@ version: 0.2.0
 
 Takeaway box to get cracking on Chef, Vagrant, Ansible, Test Kitchen and Docker
 
-## Prequisites
+## Prerequisites
 You will need the following software on your local host:
-* VirtualBox (https://www.virtualbox.org/wiki/Downloads)
-* Vagrant (http://www.vagrantup.com/downloads.html)
-* A git client
-  * For Linux and OSX users, download and install using the native package management
-  * For Windows users, download and install from https://msysgit.github.io/
+- [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+- [Vagrant](http://www.vagrantup.com/downloads.html)
+- Git client (e.g. on Linux `apt-get install git`, on Windows [msysgit](https://msysgit.github.io/)
 
 ## Quickstart
 
