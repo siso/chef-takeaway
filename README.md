@@ -18,14 +18,18 @@ You will need the following software on your local host:
 
 ## Quickstart
 
-Clone this repo, and start *chef-takeaway* box for Vagrant:
-
+Clone this repo, and start the *chef-takeaway* box for Vagrant:
 ```shell
 git clone git@github.com:siso/chef-takeaway.git
 cd chef-takeaway/vagrant
 vagrant up
+```
+
+Login to the *chef-takeaway* box:
+```shell
 vagrant ssh
 ```
+For Windows users, you may need to link Vagrant to the Git SSH client, by adding "C:\Users\<USER_NAME>\AppData\Local\Programs\Git\bin" to the Path environment variable.
 
 ## How-to and Info
 
