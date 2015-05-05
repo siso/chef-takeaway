@@ -1,32 +1,51 @@
-# vagrant-cheftdd
+# chef-takeaway
 
-version: 0.1.0
+[![Build Status](https://travis-ci.org/siso/chef-takeaway.png)](https://travis-ci.org/siso/chef-takeaway)
 
-## TDD with Chef - Vagrant, Ansible, Test Kitchen and Docker
+version: 0.2.0
 
-Let Vagrant provision VirtualBox box with Ansible, and test with Test Kitchen and Docker.
+## Synopsis
 
-It's portable and fast!
+Takeaway box to get cracking on Chef, Vagrant, Ansible, Test Kitchen and Docker
 
 ## Quickstart
+
+Clone this repo, and start *chef-takeaway* box for Vagrant:
+
+```shell
+git clone git@github.com:siso/chef-takeaway.git
+cd chef-takeaway/vagrant
+vagrant up
+vagrant ssh
+```
+
+## How-to and Info
+
+### Directories
+
+- `ansible` -- Ansible playbook to provision *chef-takeaway* Vagrant box
+- `packer` -- Packer templates and stuff to create *chef-takeaway* box from scratch
+- `vagrant` -- run *chef-takeaway* off the shelf
+- `share` -- mounted on `/home/vagrant/share` in guest box
+
+### Provision 'chef-takeaway' with Vagrant and Ansible
+
+Clone *chef-takeaway* repository from GitHub:
+
+```shell
+git clone git@github.com:siso/chef-takeaway.git
+cd chef-takeaway
+vagrant up
+```
 
 Install [Ansible](http://www.ansible.com/):
 
 ```shell
 pip install ansible
+vagrant provision
 ```
 
-Use Vagrant to create and provision VitualBox machine:
-
-```
-vagrant up
-```
-
-SSH in to VirtualBox vm:
-
-```shell
-vagrant ssh
-```
+### Develop Chef Cookbook
 
 Start cooking with [Chef](https://www.chef.io/):
 
@@ -34,6 +53,8 @@ Start cooking with [Chef](https://www.chef.io/):
 cd chef
 berks cookbook helloworld
 ```
+
+**WARNING** - `~/chef` directory is mounted from host onto guest system in `/home/vagrant/chef`. *Files and dirs in `/home/vagrant/chef` deleted on the guest machine, are deleted on the host machine too!*
 
 ## Test Kitchen drivers
 
@@ -88,6 +109,60 @@ $ kitchen driver discover
     kitchen-zcloudjp                  0.5.0
     test-kitchen-provisioners         0.1
 ```
+
+## Vagrant
+
+Supported Cloud Providers:
+
+```shell
+$ vagrant plugin list
+vagrant-aws (0.6.0)
+vagrant-azure (1.1.1)
+vagrant-digitalocean (0.7.3)
+vagrant-google (0.1.4)
+vagrant-proxyconf (1.5.0)
+vagrant-rackspace (0.1.10)
+vagrant-share (1.1.3, system)
+```
+
+## SSH
+
+Optionally SSH key and configuration file can be copied to vagrant box, e.g. to manage (SSH or run KitchenCI) server via bastion:
+
+```shell
+scp -P 30022 -i .vagrant/machines/default/virtualbox/private_key ~/.ssh/id_rsa vagrant@localhost:/home/vagrant/.ssh/
+scp -P 30022 -i .vagrant/machines/default/virtualbox/private_key ~/.ssh/id_rsa.pub vagrant@localhost:/home/vagrant/.ssh/
+scp -P 30022 -i .vagrant/machines/default/virtualbox/private_key ~/.ssh/config vagrant@localhost:/home/vagrant/.ssh/
+```
+
+## Packer
+
+Build VirtualBox box with [Packer](https://www.packer.io/):
+
+```shell
+cd packer
+packer build debian-7.8.0-amd64-cheftdd-virtualbox.json
+```
+
+Once Vagrant box is created, it can be added to Vagrant boxes:
+
+```shell
+$ cd vagrant
+$ vagrant box add chef-takeaway ../packer/virtualbox/chef-takeaway-wheezy.box
+```
+
+## Contribute
+
+- Fork the repository on Github
+- Create a named feature branch (like add_component_x)
+- Write your change
+- Write tests for your change (if applicable)
+- Run the tests, ensuring they all pass
+- Submit a Pull Request using Github
+
+## Authors
+
+- Author:: Simone Soldateschi (simone.soldatechi@gmail.com)
 
 ## License
 

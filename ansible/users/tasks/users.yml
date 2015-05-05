@@ -11,11 +11,13 @@
     - /vagrant/share
     - /vagrant/share/chef
 
+- name: create SSH dir
+  file: path=/home/vagrant/.ssh owner=vagrant group=vagrant mode=0700 state=directory
+
 - name: symlink share and chef dirs
   file: src={{ item.path }} dest={{ item.dest }} state=link
   with_items:
       - { path: '/vagrant/share', dest: '/home/vagrant/share' }
-      - { path: '/vagrant/share/chef', dest: '/home/vagrant/chef' }
 
 - name: copy user's files
   copy:
@@ -27,11 +29,28 @@
   with_items:
     - .bash_aliases
     - .bashrc
+    - .vimrc
 
 - name:
   command: git clone https://github.com/magicmonty/bash-git-prompt.git .bash-git-prompt
   args:
     chdir: /home/vagrant
     creates: /home/vagrant/.bash-git-prompt
+  sudo: yes
+  sudo_user: vagrant
+
+- name: add insecure SSH key to authorised keys for vagrant user
+  shell: "wget -q -O- 'https://github.com/mitchellh/vagrant/raw/master/keys/vagrant.pub' | tee -a /home/vagrant/.ssh/authorized_keys"
+  sudo: yes
+  sudo_user: vagrant
+
+- name: create SSH authorized_keys file
+  file: path=/home/vagrant/.ssh/authorized_keys owner=vagrant group=vagrant mode=0600
+
+- name: gather ssh public keys
+  command: ssh-keyscan -t rsa {{ item }}
+  with_items:
+    - github.com
+    - bitbucket.com
   sudo: yes
   sudo_user: vagrant

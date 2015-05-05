@@ -1,4 +1,6 @@
 ---
+- debug: msg="current user {{ ansible_ssh_user }}"
+
 - name: Install basic packages
   apt:
     pkg: "{{ item }}"
@@ -6,6 +8,7 @@
     update_cache: yes
     cache_valid_time: 600
   with_items:
+    - curl
     - elinks
     - g++
     - git
@@ -13,3 +16,12 @@
     - mc
     - mtr
     - screen
+    - vim
+  sudo: true
+  sudo_user: root
+
+- name: Update debian alternatives
+  command: /usr/sbin/update-alternatives --set {{ item.name }} {{ item.path }}
+  with_items:
+    - name: editor
+      path: /usr/bin/vim.basic

@@ -6,3 +6,12 @@ share/
 
 # KitchenCI
 .kitchen
+
+*.bak
+
+# Packer
+packer_cache
+output-virtualbox-iso
+*.box
+
+Gemfile.lock
