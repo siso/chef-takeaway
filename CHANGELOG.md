@@ -1,44 +1,36 @@
-vagrant-cheftdd CHANGELOG
-==========================
+# vagrant-cheftdd CHANGELOG
 
-0.1.9
-----
+## 0.2.0
+- [Simone Soldateschi] - Upload Vagrant box in the Cloud, enhance documentation
+
+## 0.1.9
 - [Simone Soldateschi] - Fix issues with VBoxAdditions and vboxfs
 
-0.1.8
-----
+## 0.1.8
 - [Simone Soldateschi] - Add `./vagrant/Vagrantfile` to run 'chef-takeaway.box'
 - [Simone Soldateschi] - Add user 'foo', to develop Chef stuff
 - [Simone Soldateschi] - Fix Packer provisioning with Ansible
 
-0.1.7
-----
+## 0.1.7
 - [Simone Soldateschi] - Install OpenStack clients
 
-0.1.6
-----
+## 0.1.6
 - [Simone Soldateschi] - Add TrevisCI integration
 
-0.1.5
-----
+## 0.1.5
 - [Simone Soldateschi] - Update Debian alternatives (e.g. set Vim as default editor)
 
-0.1.4
-----
+## 0.1.4
 - [Simone Soldateschi] - Use Packer to build VirtualBox box, and Ansible to provision it
 
-0.1.3
-----
+## 0.1.3
 - [Simone Soldateschi] - Add Vagrant plugins for main Cloud providers
 
-0.1.2
-----
+## 0.1.2
 - [Simone Soldateschi] - Add Vagrant, inside Vagrant
 
-0.1.1
-----
+## 0.1.1
 - [Simone Soldateschi] - Add Polipo proxy
 
-0.1.0
-----
+## 0.1.0
 - [Simone Soldateschi] - Initial release of vagrant-cheftdd

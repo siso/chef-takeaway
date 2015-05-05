@@ -20,8 +20,7 @@ VAGRANTFILE_API_VERSION = '2'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = 'chef-takeaway'
-  # TODO -- UPDATE config.vm.box_url TO POINT TO CLOUD FILES/CDN
-  # config.vm.box_url = 'http://10.16.11.60:8080/chef-takeaway.box'
+  config.vm.box_url = 'http://995e65d53bed216eb15c-0c2f4b0748cddd6b01300aa4c8dccc25.r25.cf4.rackcdn.com/chef-takeaway-wheezy.box'
 
   # config.ssh.username = 'vagrant'
   # config.ssh.password = 'vagrant'

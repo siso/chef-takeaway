@@ -2,24 +2,31 @@
 
 [![Build Status](https://travis-ci.org/siso/chef-takeaway.png)](https://travis-ci.org/siso/chef-takeaway)
 
-version: 0.1.9
+version: 0.2.0
 
 ## Synopsis
+
 Takeaway box to get cracking on Chef, Vagrant, Ansible, Test Kitchen and Docker
 
-## TODO -- Quickstart
+## Quickstart
 
-Download *chef-takeaway* box for Vagrant:
+Clone this repo, and start *chef-takeaway* box for Vagrant:
 
 ```shell
-wget https://XXX
-tar xvfz chef-takeaway.tgz
-cd chef-takeaway
+git clone git@github.com:siso/chef-takeaway.git
+cd chef-takeaway/vagrant
 vagrant up
 vagrant ssh
 ```
 
-## How-to
+## How-to and Info
+
+### Directories
+
+- `ansible` -- Ansible playbook to provision *chef-takeaway* Vagrant box
+- `packer` -- Packer templates and stuff to create *chef-takeaway* box from scratch
+- `vagrant` -- run *chef-takeaway* off the shelf
+- `share` -- mounted on `/home/vagrant/share` in guest box
 
 ### Provision 'chef-takeaway' with Vagrant and Ansible
 
