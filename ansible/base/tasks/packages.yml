@@ -1,6 +1,16 @@
 ---
 - debug: msg="current user {{ ansible_ssh_user }}"
 
+- name: Enable Wheezy Backports repo
+  apt_repository:
+    repo='deb http://ftp.au.debian.org/debian wheezy-backports main' state=present
+    update_cache: yes
+
+- name: Enable Wheezy Backports source repo
+  apt_repository:
+    repo='deb-src http://ftp.au.debian.org/debian wheezy-backports main' state=present
+    update_cache: yes
+
 - name: Install basic packages
   apt:
     pkg: "{{ item }}"
