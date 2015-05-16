@@ -4,7 +4,8 @@
 # CONFIGURATION
 
 # mount directories from host to guest
-shared_folders = {"#{Dir.home}/chef" => '/home/vagrant/chef'}
+# shared_folders = {"#{Dir.home}/chef" => '/home/vagrant/chef'}
+shared_folders = {}
 
 # VM with gui or headless
 vm_gui = false
