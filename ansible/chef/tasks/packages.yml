@@ -24,8 +24,6 @@
   get_url: url="{{ vagrant_pkg_url }}" dest="/home/vagrant/download/{{ vagrant_pkg_file }}"
   sudo: yes
   sudo_user: vagrant
-  args:
-    creates: /home/vagrant/download/{{ vagrant_pkg_file }}
 
 - name: Install Vagrant
   shell: "dpkg -i /home/vagrant/download/{{ vagrant_pkg_file }}"
@@ -89,7 +87,7 @@
 
 - name: copy scripts
   copy:
-    src: usr/local/bin{{ item }}
+    src: usr/local/bin/{{ item }}
     dest: /usr/local/bin
     owner: root
     group: root
