@@ -13,6 +13,7 @@
     - g++
     - git
     - iotop
+    - jq
     - mc
     - mtr
     - screen
