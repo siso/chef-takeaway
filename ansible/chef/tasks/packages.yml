@@ -21,7 +21,7 @@
 
 # Vagrant - yeah, Vagrant inside Vagrant
 - name: Download Vagrant
-  shell: "wget -O /home/vagrant/download/{{ vagrant_pkg_file }} {{ vagrant_pkg_url }}"
+  get_url: url="{{ vagrant_pkg_url }}" dest="/home/vagrant/download/{{ vagrant_pkg_file }}"
   sudo: yes
   sudo_user: vagrant
   args:

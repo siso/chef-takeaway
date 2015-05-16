@@ -15,3 +15,5 @@ output-virtualbox-iso
 *.box
 
 Gemfile.lock
+
+*.swp

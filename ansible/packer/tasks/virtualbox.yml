@@ -15,9 +15,9 @@
     update_cache: yes
     cache_valid_time: 600
   with_items:
-    - virtualbox-ose-guest-x11
-    - virtualbox-ose-guest-dkms
-    - virtualbox-ose-guest-utils
+    - virtualbox-guest-x11
+    - virtualbox-guest-dkms
+    - virtualbox-guest-utils
     # Install dkms for dynamic compiles
     - dkms
     # If libdbus is not installed, virtualbox will not autostart

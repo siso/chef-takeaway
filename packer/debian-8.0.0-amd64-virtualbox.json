@@ -1,0 +1,101 @@
+{
+  "variables": {
+    "core": 1,
+    "memory": 512,
+    "disk_size": 10140,
+    "ssh_port": 22,
+    "ssh_wait_timeout": "10000s",
+    "iso_url": "http://cdimage.debian.org/debian-cd/8.0.0/amd64/iso-cd/debian-8.0.0-amd64-netinst.iso",
+    "iso_md5": "d9209f355449fe13db3963571b1f52d4",
+    "vm_name": "chef-takeaway-jessie"
+  },
+  "builders": [
+    {
+      "boot_command": [
+        "<esc><wait>",
+        "install <wait>",
+        "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed-jessie.cfg <wait>",
+        "debian-installer=en_US <wait>",
+        "auto <wait>",
+        "locale=en_US <wait>",
+        "kbd-chooser/method=us <wait>",
+        "netcfg/get_hostname={{ .Name }} <wait>",
+        "netcfg/get_domain=vagrantup.com <wait>",
+        "fb=false <wait>",
+        "debconf/frontend=noninteractive <wait>",
+        "console-setup/ask_detect=false <wait>",
+        "console-keymaps-at/keymap=us <wait>",
+        "keyboard-configuration/xkb-keymap=us <wait>",
+        "<enter><wait>"
+      ],
+      "disk_size": "{{user `disk_size`}}",
+      "guest_os_type": "Debian_64",
+      "headless": true,
+      "http_directory": "http",
+      "iso_checksum": "{{user `iso_md5`}}",
+      "iso_checksum_type": "md5",
+      "iso_url": "{{user `iso_url`}}",
+      "shutdown_command": "echo 'halt -p' > shutdown.sh; echo 'vagrant'|sudo -S sh 'shutdown.sh'",
+      "ssh_password": "vagrant",
+      "ssh_username": "vagrant",
+      "ssh_port": "{{user `ssh_port`}}",
+      "ssh_host_port_min": "30022",
+      "ssh_host_port_max": "30022",
+      "ssh_wait_timeout": "{{user `ssh_wait_timeout`}}",
+      "type": "virtualbox-iso",
+      "vm_name": "{{user `vm_name`}}",
+      "vboxmanage": [
+        ["modifyvm", "{{.Name}}", "--memory", "{{user `memory`}}"],
+        ["modifyvm", "{{.Name}}", "--cpus", "{{user `core`}}"]
+      ]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "vagrant",
+      "output": "./{{.Provider}}/{{user `vm_name`}}.box"
+    }
+  ],
+  "provisioners": [
+    {
+        "type": "shell",
+        "execute_command": "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'",
+        "inline": [
+            "sleep 30"
+        ]
+    },
+    {
+      "type": "shell",
+      "pause_before": "5s",
+      "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'",
+      "override": {
+        "virtualbox-iso": {
+          "scripts": [
+            "scripts/base.sh",
+            "scripts/vagrant.sh"
+          ]
+        }
+      }
+    },
+    {
+      "type": "ansible-local",
+      "pause_before": "5s",
+      "playbook_dir": "../ansible",
+      "playbook_file": "../ansible/main.yml",
+      "role_paths": ["../ansible"],
+      "extra_arguments": ["-vvvv", "-u", "root"]
+    },
+    {
+      "type": "shell",
+      "pause_before": "5s",
+      "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'",
+      "override": {
+        "virtualbox-iso": {
+          "scripts": [
+            "scripts/cleanup.sh"
+          ]
+        }
+      }
+    }
+  ]
+}
