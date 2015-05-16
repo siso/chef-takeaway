@@ -1,6 +1,8 @@
 # vagrant-cheftdd CHANGELOG
 
 ## NEW
+- [Simone Soldateschi] - Simplify run by moving ./vagrant/Vagrantfile to ./
+- [Simone Soldateschi] - Move ./Vagrantfile to ./ansible dir, to provision locally
 - [Simone Soldateschi] - Install jq, kitchen-azure, httpie and iPython
 - [Simone Soldateschi] - Remove stuff to build image based on Debian Wheezy
 - [Simone Soldateschi] - Build chef-takeaway based on Debian Jessie amd64 completes
