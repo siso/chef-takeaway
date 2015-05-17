@@ -1,2 +1,5 @@
 ---
-- include: packages.yml
+- include: chef.yml
+- include: docker.yml
+- include: kitchen.yml
+- include: vagrant.yml

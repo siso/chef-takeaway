@@ -1,0 +1,22 @@
+---
+- name: Download Vagrant
+  get_url: url="{{ vagrant_pkg_url }}" dest="/home/vagrant/download/{{ vagrant_pkg_file }}"
+  sudo: yes
+  sudo_user: vagrant
+
+- name: Install Vagrant
+  shell: "dpkg -i /home/vagrant/download/{{ vagrant_pkg_file }}"
+
+- name: Install Vagrant plugins
+  shell: vagrant plugin install {{ item }}
+  args:
+    chdir: /home/vagrant
+  sudo: yes
+  sudo_user: vagrant
+  with_items:
+    - vagrant-proxyconf
+    - vagrant-aws
+    - vagrant-azure
+    - vagrant-digitalocean
+    - vagrant-google
+    - vagrant-rackspace

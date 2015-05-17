@@ -1,6 +1,8 @@
 # vagrant-cheftdd CHANGELOG
 
 ## NEW
+- [Simone Soldateschi] -  Split Chef play into multiple parts, disable openstack play
+- [Simone Soldateschi] - Merge branch 'jessie' into devel
 - [Simone Soldateschi] - Simplify run by moving ./vagrant/Vagrantfile to ./
 - [Simone Soldateschi] - Move ./Vagrantfile to ./ansible dir, to provision locally
 - [Simone Soldateschi] - Install jq, kitchen-azure, httpie and iPython
