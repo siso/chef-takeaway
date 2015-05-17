@@ -75,6 +75,7 @@
   sudo: yes
   sudo_user: vagrant
   with_items:
+    - kitchen-azure
     - kitchen-docker
     - kitchen-rackspace
 

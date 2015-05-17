@@ -12,14 +12,15 @@ Takeaway box to get cracking on Chef, Vagrant, Ansible, Test Kitchen and Docker
 You will need the following software on your local host:
 - [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 - [Vagrant](http://www.vagrantup.com/downloads.html)
-- Git client (e.g. on Linux `apt-get install git`, on Windows download and install [msysgit](https://msysgit.github.io/))
+- Git client
 
 ## Quickstart
 
-Clone this repo, and start the *chef-takeaway* box for Vagrant:
+Just clone this repo, and run Vagrant:
+
 ```shell
 git clone git@github.com:siso/chef-takeaway.git
-cd chef-takeaway/vagrant
+cd chef-takeaway
 vagrant up
 ```
 
@@ -28,33 +29,12 @@ Login to the *chef-takeaway* box:
 vagrant ssh
 ```
 
-Windows users may need to link Vagrant to the Git SSH client, by adding `"C:\Users\<USER_NAME>\AppData\Local\Programs\Git\bin"` to the Path environment variable.
-
 ## How-to and Info
 
 ### Directories
 
 - `ansible` -- Ansible playbook to provision *chef-takeaway* Vagrant box
 - `packer` -- Packer templates and stuff to create *chef-takeaway* box from scratch
-- `vagrant` -- run *chef-takeaway* off the shelf
-- `share` -- mounted on `/home/vagrant/share` in guest box
-
-### Provision 'chef-takeaway' with Vagrant and Ansible
-
-Clone *chef-takeaway* repository from GitHub:
-
-```shell
-git clone git@github.com:siso/chef-takeaway.git
-cd chef-takeaway
-vagrant up
-```
-
-Install [Ansible](http://www.ansible.com/):
-
-```shell
-pip install ansible
-vagrant provision
-```
 
 ### Develop Chef Cookbook
 
@@ -136,31 +116,23 @@ vagrant-rackspace (0.1.10)
 vagrant-share (1.1.3, system)
 ```
 
-## SSH
-
-Optionally SSH key and configuration file can be copied to vagrant box, e.g. to manage (SSH or run KitchenCI) server via bastion:
-
-```shell
-scp -P 30022 -i .vagrant/machines/default/virtualbox/private_key ~/.ssh/id_rsa vagrant@localhost:/home/vagrant/.ssh/
-scp -P 30022 -i .vagrant/machines/default/virtualbox/private_key ~/.ssh/id_rsa.pub vagrant@localhost:/home/vagrant/.ssh/
-scp -P 30022 -i .vagrant/machines/default/virtualbox/private_key ~/.ssh/config vagrant@localhost:/home/vagrant/.ssh/
-```
-
 ## Packer
 
-Build VirtualBox box with [Packer](https://www.packer.io/):
+Build server image with Packer and Ansible:
 
 ```shell
-cd packer
-packer build debian-7.8.0-amd64-cheftdd-virtualbox.json
+cd packer/
+packer build debian-8.0.0-amd64-virtualbox.json
+# this will take quite a long time
+vagrant box add virtualbox/chef-takeaway-jessie.box
 ```
 
-Once Vagrant box is created, it can be added to Vagrant boxes:
+## Windows users
 
-```shell
-$ cd vagrant
-$ vagrant box add chef-takeaway ../packer/virtualbox/chef-takeaway-wheezy.box
-```
+Download and install your favourite Git client, e.g. [msysgit](https://msysgit.github.io/).
+
+Windows users may need to link Vagrant to the Git SSH client, by adding `"C:\Users\<USER_NAME>\AppData\Local\Programs\Git\bin"` to the Path environment variable.
+
 
 ## Contribute
 

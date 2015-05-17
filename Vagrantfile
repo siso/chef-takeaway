@@ -21,7 +21,6 @@ copy_ssh_files = true
 # Vagrantfile API/syntax version
 VAGRANTFILE_API_VERSION = '2'
 
-
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = 'chef-takeaway'
   config.vm.box_url = 'http://995e65d53bed216eb15c-0c2f4b0748cddd6b01300aa4c8dccc25.r25.cf4.rackcdn.com/chef-takeaway-wheezy.box'
@@ -29,6 +28,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # config.ssh.username = 'vagrant'
   # config.ssh.password = 'vagrant'
 
+  config.vm.hostname = 'chef-takeaway'
   config.vm.hostname = 'chef-takeaway'
 
   # config.vm.network :forwarded_port, guest: 22, host: vm_forward_ssh_port, id: 'ssh', auto_correct: false
