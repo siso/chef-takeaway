@@ -1,0 +1,23 @@
+---
+# see: https://docs.docker.com/installation/debian/
+- name: Download Docker install script
+  command: 'wget https://get.docker.com/ -O /tmp/get_docker_com'
+  args:
+    creates: /usr/bin/docker
+
+- name: Install Docker
+  command: 'sh /tmp/get_docker_com'
+  args:
+    creates: /usr/bin/docker
+
+- name: Giving non-root access for vagrant user
+  command: adduser vagrant docker
+
+- name: Restart docker daemon to apply changes
+  service: name=docker state=restarted
+
+- name: Check vagrant user can run docker
+  command: "docker ps"
+  register: docker_ps
+  failed_when: >
+    docker_ps.rc != 0

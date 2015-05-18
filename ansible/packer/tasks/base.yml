@@ -12,5 +12,4 @@
     - build-essential
     - libreadline-gplv2-dev
     - libssl-dev
-    - python-dev
     - zlib1g-dev

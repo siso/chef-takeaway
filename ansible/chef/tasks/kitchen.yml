@@ -1,0 +1,12 @@
+---
+- name: Install test-kitchen drivers
+  shell: eval "$(chef shell-init bash)" && gem install "{{ item }}"
+  # args:
+  #   chdir: /home/vagrant
+  #   executable: /bin/bash
+  sudo: yes
+  sudo_user: vagrant
+  with_items:
+    - kitchen-azure
+    - kitchen-docker
+    - kitchen-rackspace

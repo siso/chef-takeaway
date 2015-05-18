@@ -5,16 +5,16 @@
     "disk_size": 10140,
     "ssh_port": 22,
     "ssh_wait_timeout": "10000s",
-    "iso_url": "http://cdimage.debian.org/debian-cd/7.8.0/amd64/iso-cd/debian-7.8.0-amd64-netinst.iso",
-    "iso_md5": "a91fba5001cf0fbccb44a7ae38c63b6e",
-    "vm_name": "chef-takeaway-wheezy"
+    "iso_url": "http://cdimage.debian.org/debian-cd/8.0.0/amd64/iso-cd/debian-8.0.0-amd64-netinst.iso",
+    "iso_md5": "d9209f355449fe13db3963571b1f52d4",
+    "vm_name": "chef-takeaway"
   },
   "builders": [
     {
       "boot_command": [
         "<esc><wait>",
         "install <wait>",
-        "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed-wheezy.cfg <wait>",
+        "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed-jessie.cfg <wait>",
         "debian-installer=en_US <wait>",
         "auto <wait>",
         "locale=en_US <wait>",
@@ -72,7 +72,8 @@
         "virtualbox-iso": {
           "scripts": [
             "scripts/base.sh",
-            "scripts/vagrant.sh"
+            "scripts/vagrant.sh",
+            "scripts/virtualbox.sh"
           ]
         }
       }

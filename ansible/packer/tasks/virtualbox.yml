@@ -15,9 +15,9 @@
     update_cache: yes
     cache_valid_time: 600
   with_items:
-    - virtualbox-ose-guest-x11
-    - virtualbox-ose-guest-dkms
-    - virtualbox-ose-guest-utils
+    - virtualbox-guest-x11
+    - virtualbox-guest-dkms
+    - virtualbox-guest-utils
     # Install dkms for dynamic compiles
     - dkms
     # If libdbus is not installed, virtualbox will not autostart
@@ -25,15 +25,16 @@
     - linux-headers-amd64
     # - linux-headers-3.2.0-4-amd64
 
-# - debug: msg="Install the VirtualBox guest additions"
-#
-# - shell: "mount -o loop VBoxGuestAdditions.iso /mnt"
-#
-# - shell: "yes|sh /mnt/VBoxLinuxAdditions.run --nox11"
-#
-# - shell: "umount /mnt"
+- debug: msg="Install the VirtualBox guest additions"
+
+- shell: "mount -o loop /home/vagrant/VBoxGuestAdditions.iso /mnt"
+
+- shell: "yes|sh /mnt/VBoxLinuxAdditions.run --nox11 -- --force"
+  ignore_errors: yes  # ignore errors, as this box is headless
+
+- shell: "umount /mnt"
 
 # - shell: "rm -f VBoxLinuxAdditions.iso"
 
-# - name: start the newly build driver
-#   service: name=vboxadd state=started enabled=yes
+- name: start the newly build driver
+  service: name=vboxadd state=started enabled=yes

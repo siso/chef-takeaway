@@ -1,0 +1,33 @@
+---
+- name: Download Chef-dk
+  command: /usr/bin/wget https://opscode-omnibus-packages.s3.amazonaws.com/debian/6/x86_64/chefdk_0.4.0-1_amd64.deb -O /home/vagrant/download/chefdk_0.4.0-1_amd64.deb
+  args:
+    creates: /home/vagrant/download/chefdk_0.4.0-1_amd64.deb
+  sudo: yes
+  sudo_user: vagrant
+
+- name: Install Chef-dk
+  command: dpkg -i /home/vagrant/download/chefdk_0.4.0-1_amd64.deb
+
+- name: Set up Chef-dk environment
+  shell: chef shell-init bash >> ~/.bashrc
+  args:
+    chdir: /home/vagrant
+  sudo: yes
+  sudo_user: vagrant
+
+- name: Check Chef-dk is set up correctly
+  command: "chef verify"
+  register: chef_verify
+  failed_when: >
+    chef_verify.rc != 0
+
+- name: copy scripts
+  copy:
+    src: usr/local/bin/{{ item }}
+    dest: /usr/local/bin
+    owner: root
+    group: root
+    mode: 0755
+  with_items:
+    - edit_data_bag.rb
