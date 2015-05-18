@@ -4,8 +4,8 @@
 # CONFIGURATION
 
 # mount directories from host to guest
-# shared_folders = {"#{Dir.home}/chef" => '/home/vagrant/chef'}
-shared_folders = {}
+shared_folders = {"#{Dir.home}/chef" => '/home/vagrant/chef'}
+# shared_folders = {}
 
 # VM with gui or headless
 vm_gui = false
@@ -22,8 +22,8 @@ copy_ssh_files = true
 VAGRANTFILE_API_VERSION = '2'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = 'chef-takeaway'
-  config.vm.box_url = 'http://995e65d53bed216eb15c-0c2f4b0748cddd6b01300aa4c8dccc25.r25.cf4.rackcdn.com/chef-takeaway-wheezy.box'
+  config.vm.box = 'chef-takeaway-0.3.0'
+  config.vm.box_url = 'http://b978c36202e860131550-3189a12cbb993ba67efdf7b3557152c8.r36.cf4.rackcdn.com/virtualbox/chef-takeaway-0.3.0.box'
 
   # config.ssh.username = 'vagrant'
   # config.ssh.password = 'vagrant'
@@ -53,11 +53,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
+  # TODO -- the following errors out "==> default: stdin: is not a tty"
   # copy SSH key and config files
-  if copy_ssh_files
-    config.vm.provision :shell, :inline => "cp #{Dir.home}/.ssh/config '/home/vagrant/.ssh/'"
-    config.vm.provision :shell, :inline => "cp #{Dir.home}/.ssh/id_rsa '/home/vagrant/.ssh/'"
-    config.vm.provision :shell, :inline => "cp #{Dir.home}/.ssh/id_rsa.pub '/home/vagrant/.ssh/'"
-  end
+  # if copy_ssh_files
+  #   config.vm.provision :shell, :inline => "cp #{Dir.home}/.ssh/config '/home/vagrant/.ssh/'"
+  #   config.vm.provision :shell, :inline => "cp #{Dir.home}/.ssh/id_rsa '/home/vagrant/.ssh/'"
+  #   config.vm.provision :shell, :inline => "cp #{Dir.home}/.ssh/id_rsa.pub '/home/vagrant/.ssh/'"
+  # end
 
 end

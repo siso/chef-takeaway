@@ -25,8 +25,16 @@ vagrant up
 ```
 
 Login to the *chef-takeaway* box:
+
 ```shell
 vagrant ssh
+```
+
+To copy `~/.ssh/config` and enable forwarding of the authentication agent connection:
+
+```shell
+scp -P 2222 -i ~/.vagrant/machines/default/virtualbox/private_key ~/.ssh/config vagrant@localhost:/home/vagrant/.ssh/
+vagrant ssh -- -A
 ```
 
 ## How-to and Info

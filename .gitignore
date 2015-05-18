@@ -13,6 +13,7 @@ share/
 packer_cache
 output-virtualbox-iso
 *.box
+*.box.md5
 
 Gemfile.lock
 

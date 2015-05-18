@@ -72,7 +72,8 @@
         "virtualbox-iso": {
           "scripts": [
             "scripts/base.sh",
-            "scripts/vagrant.sh"
+            "scripts/vagrant.sh",
+            "scripts/virtualbox.sh"
           ]
         }
       }

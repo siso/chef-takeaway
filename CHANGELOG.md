@@ -1,7 +1,8 @@
 # vagrant-cheftdd CHANGELOG
 
-## NEW
-- [Simone Soldateschi] -  Split Chef play into multiple parts, disable openstack play
+## NEW (minor version has to change)
+- [Simone Soldateschi] - Fix minor issues
+- [Simone Soldateschi] - Split Chef play into multiple parts, disable openstack play
 - [Simone Soldateschi] - Merge branch 'jessie' into devel
 - [Simone Soldateschi] - Simplify run by moving ./vagrant/Vagrantfile to ./
 - [Simone Soldateschi] - Move ./Vagrantfile to ./ansible dir, to provision locally

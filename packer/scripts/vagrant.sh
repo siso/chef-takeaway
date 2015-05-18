@@ -3,7 +3,8 @@
 date > /etc/vagrant_box_build_time
 
 # Create the user vagrant with password vagrant
-useradd -G sudo -p $(perl -e'print crypt("vagrant", "vagrant")') -m -s /bin/bash -N vagrant
+# this task is already accomplished in preseed-jessie.cfg
+# useradd -G sudo -p $(perl -e'print crypt("vagrant", "vagrant")') -m -s /bin/bash -N vagrant
 
 echo 'vagrant    ALL=(ALL)  NOPASSWD:ALL' >> /etc/sudoers
 
