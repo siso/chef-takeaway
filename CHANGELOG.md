@@ -1,6 +1,6 @@
 # vagrant-cheftdd CHANGELOG
 
-## NEW (minor version has to change)
+## 0.3.0
 - [Simone Soldateschi] - Fix minor issues
 - [Simone Soldateschi] - Split Chef play into multiple parts, disable openstack play
 - [Simone Soldateschi] - Merge branch 'jessie' into devel
