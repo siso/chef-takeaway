@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/siso/chef-takeaway.png)](https://travis-ci.org/siso/chef-takeaway)
 
-version: 0.2.0
+version: 0.3.0
 
 ## Synopsis
 
