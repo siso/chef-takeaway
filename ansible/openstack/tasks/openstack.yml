@@ -20,7 +20,9 @@
     - httpie
     - ipython
     - pyrax
-    - python-heatclient
+# TODO -- do not install python-heatclient, as it breaks pip, which always returns
+#         ImportError: cannot import name IncompleteRead
+    # - python-heatclient
     - python-novaclient
     - python-openstackclient
     - python-openstacksdk
