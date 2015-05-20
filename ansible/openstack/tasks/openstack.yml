@@ -1,5 +1,5 @@
 ---
-- name: resolve dependencies before installing pip packages
+- name: resolve dependencies, then install pip and pip packages
   apt:
     pkg: "{{ item }}"
     state: latest
@@ -8,21 +8,29 @@
   with_items:
     - libffi-dev
     - python-dev
-    - python-pip
+
+# install the latest pip version to solve:
+#
+#         ImportError: cannot import name IncompleteRead
+
+- name: download pip installer
+  get_url: url="https://bootstrap.pypa.io/get-pip.py" dest="/home/vagrant/download/get-pip.py"
+  sudo: yes
+  sudo_user: vagrant
+
+- name: install pip
+  command: python /home/vagrant/download/get-pip.py
 
 - name: Install pip packages
   pip:
     name: "{{ item }}"
     state: latest
   with_items:
-    # install 'requests' first, see: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=744145
     - requests
     - httpie
     - ipython
     - pyrax
-# TODO -- do not install python-heatclient, as it breaks pip, which always returns
-#         ImportError: cannot import name IncompleteRead
-    # - python-heatclient
+    - python-heatclient
     - python-novaclient
     - python-openstackclient
     - python-openstacksdk
