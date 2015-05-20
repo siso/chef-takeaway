@@ -1,2 +1,12 @@
 ---
 - include: packages.yml
+
+- name: populate /etc/siso dir
+  copy:
+    src: etc/siso/{{ item }}
+    dest: /etc/siso
+    owner: root
+    group: root
+    mode: 0644
+  with_items:
+    - metadata.json

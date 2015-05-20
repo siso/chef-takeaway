@@ -1,0 +1,9 @@
+{
+  "version": "0.3.0",
+  "name": "chef-takeaway",
+  "author": "Simone Soldateschi",
+  "email": "simone.soldateschi@gmail.com",
+  "URL": "https://github.com/siso/chef-takeaway",
+  "license": "GPLv3",
+  "license-url": "http://www.gnu.org/copyleft/gpl.html"
+}
