@@ -53,12 +53,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
-  # TODO -- the following errors out "==> default: stdin: is not a tty"
-  # copy SSH key and config files
-  # if copy_ssh_files
-  #   config.vm.provision :shell, :inline => "cp #{Dir.home}/.ssh/config '/home/vagrant/.ssh/'"
-  #   config.vm.provision :shell, :inline => "cp #{Dir.home}/.ssh/id_rsa '/home/vagrant/.ssh/'"
-  #   config.vm.provision :shell, :inline => "cp #{Dir.home}/.ssh/id_rsa.pub '/home/vagrant/.ssh/'"
-  # end
+  # copy files to guest box
+  config.vm.provision "file", source: "~/.gitconfig", destination: ".gitconfig"
+  config.vm.provision "file", source: "#{Dir.home}/.ssh/config", destination: ".ssh/config"
 
 end
