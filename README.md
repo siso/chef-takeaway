@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/siso/chef-takeaway.png)](https://travis-ci.org/siso/chef-takeaway)
 
-version: 0.3.0
+version: 0.3.1
 
 ## Synopsis
 
@@ -27,15 +27,10 @@ vagrant up
 Login to the *chef-takeaway* box:
 
 ```shell
-vagrant ssh
-```
-
-To copy `~/.ssh/config` and enable forwarding of the authentication agent connection:
-
-```shell
-scp -P 2222 -i ~/.vagrant/machines/default/virtualbox/private_key ~/.ssh/config vagrant@localhost:/home/vagrant/.ssh/
 vagrant ssh -- -A
 ```
+
+where `-A` enables forwarding of the authentication agent connection.
 
 ## How-to and Info
 

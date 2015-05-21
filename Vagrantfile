@@ -22,8 +22,8 @@ copy_ssh_files = true
 VAGRANTFILE_API_VERSION = '2'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = 'chef-takeaway-0.3.0'
-  config.vm.box_url = 'http://b978c36202e860131550-3189a12cbb993ba67efdf7b3557152c8.r36.cf4.rackcdn.com/virtualbox/chef-takeaway-0.3.0.box'
+  config.vm.box = 'chef-takeaway-0.3.1'
+  config.vm.box_url = 'http://b978c36202e860131550-3189a12cbb993ba67efdf7b3557152c8.r36.cf4.rackcdn.com/virtualbox/chef-takeaway-0.3.1.box'
 
   # config.ssh.username = 'vagrant'
   # config.ssh.password = 'vagrant'

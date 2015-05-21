@@ -8,7 +8,7 @@
     "iso_url": "http://cdimage.debian.org/debian-cd/8.0.0/amd64/iso-cd/debian-8.0.0-amd64-netinst.iso",
     "iso_md5": "d9209f355449fe13db3963571b1f52d4",
     "vm_name": "chef-takeaway",
-    "vm_version": "0.3.0"
+    "vm_version": "0.3.1"
   },
   "builders": [
     {

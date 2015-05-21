@@ -1,5 +1,13 @@
 # vagrant-cheftdd CHANGELOG
 
+## 0.3.1
+- [Simone Soldateschi] - Add build metadata to box
+- [Simone Soldateschi] - Install the latest pip version
+- [Simone Soldateschi] - Fix #6, Vagrantfile copy files to guest box
+- [Simone Soldateschi] - Fix #13, install knife-rackspace gem
+- [Simone Soldateschi] - Add version to box naming schema
+- [Simone Soldateschi] - Fix issue with pip packages and openstack clients
+
 ## 0.3.0
 - [Simone Soldateschi] - Fix minor issues
 - [Simone Soldateschi] - Split Chef play into multiple parts, disable openstack play
