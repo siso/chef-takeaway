@@ -31,3 +31,13 @@
     mode: 0755
   with_items:
     - edit_data_bag.rb
+
+- name: Install knife gems
+  shell: eval "$(chef shell-init bash)" && gem install "{{ item }}"
+  # args:
+  #   chdir: /home/vagrant
+  #   executable: /bin/bash
+  sudo: yes
+  sudo_user: vagrant
+  with_items:
+    - knife-rackspace

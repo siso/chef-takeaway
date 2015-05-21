@@ -1,2 +1,8 @@
 ---
 - include: packages.yml
+
+- name: create /etc/siso dir
+  file: path=/etc/siso owner=root group=root mode=0755 state=directory
+
+- name: add chef-takeaway metadata to box
+  template: src=etc/siso/metadata.json.j2 dest=/etc/siso/metadata.json owner=root group=root mode="0644"

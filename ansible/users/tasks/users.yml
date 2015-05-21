@@ -17,7 +17,7 @@
 - name: symlink share and chef dirs
   file: src={{ item.path }} dest={{ item.dest }} state=link
   with_items:
-      - { path: '/vagrant/share', dest: '/home/vagrant/share' }
+      - { path: '/vagrant', dest: '/home/vagrant/share' }
 
 - name: copy user's files
   copy:

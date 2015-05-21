@@ -21,9 +21,9 @@ VAGRANTFILE_API_VERSION = '2'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = 'siso-debian-8.0.0-amd64-jessie'
-  # config.vm.box_url = 'XXX'
+  config.vm.box_url = 'http://b978c36202e860131550-3189a12cbb993ba67efdf7b3557152c8.r36.cf4.rackcdn.com/virtualbox/siso-debian-8.0.0-amd64-jessie.box'
 
-  config.vm.hostname = 'chef-takeaway-builder'
+  config.vm.hostname = 'chef-takeaway-devel'
 
   if (defined?(vm_forward_ssh_port))
     config.vm.network :forwarded_port, guest: 22, host: vm_forward_ssh_port, id: 'ssh', auto_correct: false
