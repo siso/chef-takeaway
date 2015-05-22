@@ -60,5 +60,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "file", source: "#{Dir.home}/.ssh/id_rsa.pub", destination: ".ssh/id_rsa.pub"
   
   # Fix up file permissions for SSH private key
-  config.vm.provision "shell", inline: "chemod 400 .ssh/id_rsa"
+  config.vm.provision "shell", inline: "chmod 400 .ssh/id_rsa"
 end
