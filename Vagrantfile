@@ -47,7 +47,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     if File.directory?(host_folder)
       puts "synced folder host_folder:#{host_folder.to_s} --> guest_folder:#{guest_folder.to_s}"
       # config.vm.synced_folder host_folder.to_s, guest_folder.to_s, id: config.vm.hostname, nfs: true, mount_options: ['nolock,vers=3,udp'], create: true
-      config.vm.synced_folder host_folder.to_s, guest_folder.to_s, id: config.vm.hostname, create: true
+      config.vm.synced_folder host_folder.to_s, guest_folder.to_s, id: config.vm.hostname, create: true, mount_options: ["umask=0000"]
     else
       puts "Warning - host_folder #{host_folder.to_s} does not exist"
     end
@@ -58,4 +58,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "file", source: "#{Dir.home}/.ssh/config", destination: ".ssh/config"
   config.vm.provision "file", source: "#{Dir.home}/.ssh/id_rsa", destination: ".ssh/id_rsa"
   config.vm.provision "file", source: "#{Dir.home}/.ssh/id_rsa.pub", destination: ".ssh/id_rsa.pub"
+  
+  # Fix up file permissions for SSH private key
+  config.vm.provision "shell", inline: "chemod 400 .ssh/id_rsa"
 end
