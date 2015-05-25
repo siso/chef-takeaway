@@ -1,5 +1,8 @@
 # vagrant-cheftdd CHANGELOG
 
+## NEW
+- [Simone Soldateschi] - Fix #20, "Failure if .ssh/config and .gitconfig don't exist"
+
 ## 0.3.1
 - [Simone Soldateschi] - Add build metadata to box
 - [Simone Soldateschi] - Install the latest pip version

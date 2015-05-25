@@ -54,7 +54,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   # copy files to guest box
-  config.vm.provision "file", source: "~/.gitconfig", destination: ".gitconfig"
-  config.vm.provision "file", source: "#{Dir.home}/.ssh/config", destination: ".ssh/config"
-
+  if File.exists?("#{Dir.home}/.gitconfig")
+    config.vm.provision "file", source: "#{Dir.home}/.gitconfig", destination: ".gitconfig"
+  end
+  if File.exists?("#{Dir.home}/.ssh/config")
+    config.vm.provision "file", source: "#{Dir.home}/.ssh/config", destination: ".ssh/config"
+  end
 end
