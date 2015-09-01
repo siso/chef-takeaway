@@ -29,7 +29,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # config.ssh.password = 'vagrant'
 
   config.vm.hostname = 'chef-takeaway'
-  config.vm.hostname = 'chef-takeaway'
 
   # config.vm.network :forwarded_port, guest: 22, host: vm_forward_ssh_port, id: 'ssh', auto_correct: false
 
